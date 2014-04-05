@@ -16,32 +16,23 @@ var PenGenerator = yeoman.generators.Base.extend({
     });
   },
 
-  askFor: function () {
-    var done = this.async();
-
-    // have Yeoman greet the user
-    this.log(this.yeoman);
-
-    // replace it with a short and sweet description of your generator
-    this.log(chalk.magenta('You\'re using the fantastic Pen generator.'));
-
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
-
-      done();
-    }.bind(this));
-  },
+  // coffee: function () {
+  //   var done = this.async();
+  //   var prompt = [{
+  //     type: 'confirm',
+  //     name: 'coffee',
+  //     message: 'Would you like to use CoffeeScript?',
+  //     default: true
+  //   }];
+  //
+  //   this.prompt(prompt, function (responses) {
+  //     this.options.coffee = responses.coffee;
+  //     done();
+  //   }.bind(this));
+  // },
 
   app: function () {
-    this.mkdir('app');
-    this.mkdir('app/templates');
+    this.directory('app', 'app');
 
     this.copy('_package.json', 'package.json');
     this.copy('_bower.json', 'bower.json');
@@ -50,7 +41,28 @@ var PenGenerator = yeoman.generators.Base.extend({
   projectfiles: function () {
     this.copy('editorconfig', '.editorconfig');
     this.copy('jshintrc', '.jshintrc');
+
+    this.copy('Gruntfile.js', 'Gruntfile.js');
+  },
+
+  publicassets : function () {
+    this.mkdir('public/js');
+    this.mkdir('public/css');
+    this.mkdir('public/img');
+  },
+
+  h5bp : function () {
+    // this.copy('favicon.ico', 'app/favicon.ico');
+    // this.copy('404.html', 'app/404.html');
+    // this.copy('robots.txt', 'app/robots.txt');
+    // this.copy('htaccess', 'app/.htaccess');
+  },
+
+  git : function () {
+    this.copy('gitignore', '.gitignore');
+    this.copy('gitattributes', '.gitattributes');
   }
+
 });
 
 module.exports = PenGenerator;
