@@ -32,36 +32,33 @@ var PenGenerator = yeoman.generators.Base.extend({
   // },
 
   app: function () {
-    this.directory('app', 'app');
-
-    this.copy('_package.json', 'package.json');
-    this.copy('_bower.json', 'bower.json');
-  },
-
-  projectfiles: function () {
-    this.copy('editorconfig', '.editorconfig');
-    this.copy('jshintrc', '.jshintrc');
-
-    this.copy('Gruntfile.js', 'Gruntfile.js');
-  },
-
-  publicassets : function () {
-    this.mkdir('public/js');
-    this.mkdir('public/css');
-    this.mkdir('public/img');
-  },
-
-  h5bp : function () {
-    // this.copy('favicon.ico', 'app/favicon.ico');
-    // this.copy('404.html', 'app/404.html');
-    // this.copy('robots.txt', 'app/robots.txt');
-    // this.copy('htaccess', 'app/.htaccess');
-  },
-
-  git : function () {
-    this.copy('gitignore', '.gitignore');
-    this.copy('gitattributes', '.gitattributes');
+    this.directory('.', '.');
   }
+  // ,
+  // projectfiles: function () {
+  //   this.copy('editorconfig', '.editorconfig');
+  //   this.copy('jshintrc', '.jshintrc');
+  //
+  //   this.copy('Gruntfile.js', 'Gruntfile.js');
+  // },
+  //
+  // publicassets : function () {
+  //   this.mkdir('public/js');
+  //   this.mkdir('public/css');
+  //   this.mkdir('public/img');
+  // },
+  //
+  // h5bp : function () {
+  //   // this.copy('favicon.ico', 'app/favicon.ico');
+  //   // this.copy('404.html', 'app/404.html');
+  //   // this.copy('robots.txt', 'app/robots.txt');
+  //   // this.copy('htaccess', 'app/.htaccess');
+  // },
+  //
+  // git : function () {
+  //   this.copy('gitignore', '.gitignore');
+  //   this.copy('gitattributes', '.gitattributes');
+  // }
 
 });
 

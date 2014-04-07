@@ -8,7 +8,7 @@ module.exports = function (grunt) {
   // load all grunt tasks
   require('load-grunt-tasks')(grunt);
 
-  var reloadPort = 3000, files;
+  var reloadPort = 35729, files;
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -21,6 +21,10 @@ module.exports = function (grunt) {
       options: {
         nospawn: true,
         livereload: reloadPort
+      },
+      coffee: {
+        files: ['src/**/*.coffee'],
+        tasks: ['coffee:dist']
       },
       server: {
         files: [
@@ -50,7 +54,21 @@ module.exports = function (grunt) {
         options: {
           livereload: reloadPort
         }
-      }
+      },
+      coffee:
+        src:
+          expand: true
+          cwd: 'src/app/'
+          src: 'index.coffee'
+          dest: 'app/'
+          ext: '.js'
+
+        test:
+          expand: true
+          cwd: 'src/test/'
+          src: ['test-creation.coffee', 'test-import.coffee']
+          dest: 'test/'
+          ext: '.js'
     }
   });
 
@@ -72,6 +90,5 @@ module.exports = function (grunt) {
         });
     }, 500);
   });
-
   grunt.registerTask('default', ['develop', 'watch']);
 };
